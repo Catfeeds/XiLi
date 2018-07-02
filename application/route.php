@@ -15,3 +15,4 @@ use think\Route;
 
 //api
 Route::get('api/:version/banner','api/:version.Banner/getBanner');
+Route::get('api/:version/show/:show','api/:version.Banner/getShowGoods');
