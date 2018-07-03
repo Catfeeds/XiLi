@@ -15,6 +15,22 @@ use think\Request;
 class Goods extends BaseModel
 {
     /*
+     * 关联图片表
+     */
+    public function image()
+    {
+        return $this->hasMany('GoodsPicture','goods_id','id');
+    }
+
+    /*
+     * 关联商品属性表
+     */
+    public function attribute()
+    {
+        return $this->hasMany('GoodsAttribute','goods_id','id');
+    }
+
+    /*
      * 获取展示栏目商品
      */
     public function setGoodsShow()
@@ -40,5 +56,32 @@ class Goods extends BaseModel
             $Goods[$key]['logo'] = ImageUrl::DOMAINURL.$value['logo'];
         }
         return $Goods;
+    }
+
+    /*
+     * 获取商品详情
+     */
+    public function setGoodsGet()
+    {
+        $request = Request::instance();
+        $productID = $request->param('id');
+        $Goods = self::with(['image','attribute','attribute.key'])->where('id',$productID)->field('id,name,supermarket_price,shop_price,logo,goods_desc')->find()->toArray();
+        $Goods['logo'] = ImageUrl::DOMAINURL.str_replace('\\','/',$Goods['logo']);
+        $image = [];
+        foreach($Goods['image'] as $k=>$v)
+        {
+            $Goods['image'][$k] = ImageUrl::DOMAINURL.str_replace('\\','/',$v['picture']);
+        }
+        return $Goods;
+    }
+
+    /*
+     * 根据分类id查找商品
+     */
+    public function setGoodsByCategoryGet()
+    {
+        $request = Request::instance();
+        $categoryID = $request->param('id');
+
     }
 }

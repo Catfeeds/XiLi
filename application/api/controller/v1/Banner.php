@@ -29,7 +29,7 @@ class Banner extends BaseController
 
     /*
      * 获取首页展示商品信息
-     * @url /api/v1/show/1,2,3  1:爆款推荐，2：新品推荐，：3：热门商品
+     * @url /api/v1/show/:show   show: 1:爆款推荐，2：新品推荐，3：热门商品
      * @http get
      * @return array goods item, code 200
      */
