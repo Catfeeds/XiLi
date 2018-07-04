@@ -34,6 +34,7 @@ class Product extends BaseController
      */
     public function getGoodsByCategory()
     {
-
+        $Goods = (new Goods())->setGoodsByCategoryGet();
+        return json_encode($Goods);
     }
 }

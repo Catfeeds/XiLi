@@ -15,6 +15,11 @@ class Category extends BaseModel
         'pid','create_time','update_time'
     ];
 
+    public function goodsCat()
+    {
+        return $this->belongsToMany('Goods','goods_cat','goods_id','cat_id');
+    }
+
     /*
      * 获取分类
      */
