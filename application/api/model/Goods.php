@@ -86,7 +86,6 @@ class Goods extends BaseModel
         foreach ($goods['goods_cat'] as $k => $v)
         {
             $goods['goods_cat'][$k]['sm_logo'] = ImageUrl::DOMAINURL.str_replace('\\','/',$v['sm_logo']);
-//            dump(ImageUrl::DOMAINURL.str_replace('\\','/',$v['sm_logo']));die;
         }
         return $goods;
     }

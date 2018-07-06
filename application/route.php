@@ -12,6 +12,9 @@
 use think\Route;
 
 
+//获取令牌
+Route::post('api/:version/token/user','api/:version.Token/getToken');
+
 //首页展示
 Route::get('api/:version/banner','api/:version.Banner/getBanner');
 Route::get('api/:version/show/:show','api/:version.Banner/getShowGoods');

@@ -10,5 +10,7 @@
 // +----------------------------------------------------------------------
 
 return [
-    'connector' => 'Sync'
+    'connector' => 'Sync',
+    'img_prefix' => 'http//zhu.com/image',
+    'token_expire_in' => 7200
 ];
